@@ -94,29 +94,56 @@ print(maxSumSubarray(arr, k))
 # print(firstNegative(arr, k))
 
 
-def longestSubstringKDistinct(s, k):
-    left = 0
-    max_len = 0
-    char_count = {}
+# def longestSubstringKDistinct(s, k):
+#     left = 0
+#     max_len = 0
+#     char_count = {}
+#     for right in range(len(s)):
+#         char_count[s[right]] = char_count.get(s[right], 0) + 1
+#         # If distinct characters exceed k
+#         while len(char_count) > k:
+#             char_count[s[left]] -= 1
 
-    for right in range(len(s)):
-        char_count[s[right]] = char_count.get(s[right], 0) + 1
+#             if char_count[s[left]] == 0:
+#                 del char_count[s[left]]
+#             left += 1
+#         max_len = max(max_len, right - left + 1)
+#     return max_len
 
-        # If distinct characters exceed k
-        while len(char_count) > k:
-            char_count[s[left]] -= 1
+# s = "eceba"
+# k = 2
 
-            if char_count[s[left]] == 0:
-                del char_count[s[left]]
-
-            left += 1
-
-        max_len = max(max_len, right - left + 1)
-
-    return max_len
+# print(longestSubstringKDistinct(s, k))
 
 
-s = "eceba"
-k = 2
 
-print(longestSubstringKDistinct(s, k))
+def findAnagrams(s, p):
+    result = []
+    p_count = {}
+    window_count = {}
+    for c in p:
+        p_count[c] = p_count.get(c, 0) + 1
+
+    k = len(p)
+
+    for i in range(len(s)):
+        # add current character
+        window_count[s[i]] = window_count.get(s[i], 0) + 1
+
+        # remove character leaving window
+        if i >= k:
+            if window_count[s[i-k]] == 1:
+                del window_count[s[i-k]]
+            else:
+                window_count[s[i-k]] -= 1
+
+        # compare counts
+        if window_count == p_count:
+            result.append(i-k+1)
+
+    return result
+
+s = "cbaebabacd"
+p = "abc"
+
+print(findAnagrams(s, p))
