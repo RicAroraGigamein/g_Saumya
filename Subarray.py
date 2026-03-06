@@ -66,20 +66,42 @@
 
 # 918. Maximum Sum Circular Subarray (without space complexity)
 
-def maxsumcircular(nums):
-    n=len(nums)
-    ans=float('-inf')
+# def maxsumcircular(nums):
+#     n=len(nums)
+#     ans=float('-inf')
 
-    for i in range(n):
-        s=0
-        for 1 in range(n):
-            s+=nums[(i+1)%n]
-            ans=max(ans,s)
+#     for i in range(n):
+#         s=0
+#         for 1 in range(n):
+#             s+=nums[(i+1)%n]
+#             ans=max(ans,s)
 
-    return ans
+#     return ans
 
 
-nums=[5,-3,5]
-result=maxsumcircular(nums)
-print(result)
+# nums=[5,-3,5]
+# result=maxsumcircular(nums)
+# print(result)
 
+
+
+# Maximum Sum Circular Subarray
+# LC 918
+
+# Maximum Absolute Sum of Any Subarray
+# LC 1749
+
+# Maximum Subarray Min-Product
+# LC 1856
+
+# Maximum Score of a Good Subarray
+# LC 1793
+
+# Longest Subarray of 1’s After Deleting One Element
+# LC 1493
+
+# Longest Continuous Subarray With Absolute Diff ≤ Limit
+# LC 1438
+
+# Shortest Unsorted Continuous Subarray
+# LC 581
